@@ -1,0 +1,93 @@
+﻿<Window x:Class="mStructural.WPF.PrepDxfWPF"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="500" Width="400"
+             MinHeight="500" MinWidth="400"
+             Topmost="True" Title="Prep DXF">
+    <Grid>
+        <StackPanel>
+            <Label Content="Material Code" HorizontalAlignment="Left" Margin="20,5"/>
+            <ComboBox x:Name="MatCodeCb" Margin="20, 5" Height="25" TabIndex="0" IsEditable="True">
+                <ComboBox.ToolTip>
+                    <ToolTip>
+                        <DockPanel>
+                            <TextBlock>
+                                AL - Aluminium<LineBreak/>
+                                ALC - Ali Checker Plates<LineBreak/>
+                                SM - Steel (Mild)<LineBreak/>
+                                SMC - Steel checker plates<LineBreak/>
+                                SS - Stainless Steel<LineBreak/>
+                                R - Rubber
+                            </TextBlock>
+                        </DockPanel>
+                    </ToolTip>
+                </ComboBox.ToolTip>
+                <ComboBoxItem>AL</ComboBoxItem>
+                <ComboBoxItem>ALC</ComboBoxItem>
+                <ComboBoxItem>CRS</ComboBoxItem>
+                <ComboBoxItem>SM</ComboBoxItem>
+                <ComboBoxItem>SMC</ComboBoxItem>
+                <ComboBoxItem>SS</ComboBoxItem>
+                <ComboBoxItem>R</ComboBoxItem>
+            </ComboBox>
+            <Label Content="Material Grade (Optional)" HorizontalAlignment="Left" Margin="20, 5"/>
+            <TextBox x:Name="MatGradeTb" TabIndex="1" Margin="20, 5" TextWrapping="Wrap" Height="25">
+                <TextBox.ToolTip>
+                    <ToolTip>
+                        <DockPanel>
+                            <TextBlock>
+                                Example: Fill in "350" for material GRADE 350 STEEL AS 1163. <LineBreak/>
+                                The material grade must be specified for the material with <LineBreak/>
+                                two or more grade variations for the same plate thickness.
+                            </TextBlock>
+                        </DockPanel>
+                    </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+            <Label Content="Thickness (mm)" HorizontalAlignment="Left" Margin="20, 5"/>
+            <TextBox x:Name="ThicknessTb" TabIndex="2" Margin="20, 5" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="25" PreviewTextInput="ThicknessTb_PreviewTextInput">
+            <TextBox.ToolTip>
+                <ToolTip>
+                    <DockPanel>
+                        <TextBlock>Plate thickness in mm.</TextBlock>
+                    </DockPanel>
+                </ToolTip>
+            </TextBox.ToolTip>
+        </TextBox>
+            <CheckBox x:Name="pressCh" TabIndex="3" Content="Pressed" HorizontalAlignment="Left" Margin="20,5">
+                <CheckBox.ToolTip>
+                <ToolTip>
+                    <DockPanel>
+                        <TextBlock>Check if the plate is pressed or flatten.</TextBlock>
+                    </DockPanel>
+                </ToolTip>
+            </CheckBox.ToolTip>
+            </CheckBox>
+            <CheckBox x:Name="blackCh" TabIndex="4" Content="Change other edges to black colour (Slower)" Margin="20,5" IsChecked="False">
+                <CheckBox.ToolTip>
+                    <ToolTip>
+                        <DockPanel>
+                            <TextBlock>Check if want to colour all the existing edge to black beforehand (Will take longer time).</TextBlock>
+                        </DockPanel>
+                    </ToolTip>
+                </CheckBox.ToolTip>
+            </CheckBox>
+            <CheckBox x:Name="UpdateQtyCh" TabIndex="5" Margin="20,5" Content="Update Quantity (Select top level model and configuration)" Checked="UpdateQtyCh_Checked" Unchecked="UpdateQtyCh_Unchecked">
+                <CheckBox.ToolTip>
+                    <ToolTip>
+                        <DockPanel>
+                            <TextBlock>Check this to update the quantity of each view with total quantity of same body in the main assembly.</TextBlock>
+                        </DockPanel>
+                    </ToolTip>
+                </CheckBox.ToolTip>
+            </CheckBox>
+            <ComboBox x:Name="TopAssemblyCmb" Margin="20,5" IsEnabled="False" SelectionChanged="TopAssemblyCmb_SelectionChanged"/>
+            <ComboBox x:Name="TopAssemblyConfigCmb" Margin="20,5" IsEnabled="False" SelectionChanged="TopAssemblyConfigCmb_SelectionChanged"/>
+            <TextBlock x:Name="SelectedPathTb" Margin="20,5" TextWrapping="Wrap"></TextBlock>
+            <Button x:Name="OkBtn" TabIndex="6" Content="OK" Margin="5,20,5,5" HorizontalAlignment="Center" Width="100" Click="OkBtn_Click" Background="White"/>
+        </StackPanel>
+    </Grid>
+</Window>

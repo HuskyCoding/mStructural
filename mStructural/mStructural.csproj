@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{16A894BE-E208-4EF2-8635-E4FAA01865AD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>mStructural</RootNamespace>
+    <AssemblyName>mStructural</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Ookii.Dialogs.Wpf, Version=5.0.0.0, Culture=neutral, PublicKeyToken=66aa232afad40158, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Nuget\ookii.dialogs.wpf.5.0.1\lib\net462\Ookii.Dialogs.Wpf.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SolidWorks.Interop.sldworks">
+      <HintPath>..\..\..\..\..\..\..\Program Files\SOLIDWORKS Corp\SOLIDWORKS\SolidWorks.Interop.sldworks.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swconst">
+      <HintPath>..\..\..\..\..\..\..\Program Files\SOLIDWORKS Corp\SOLIDWORKS\SolidWorks.Interop.swconst.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swpublished">
+      <HintPath>..\..\..\..\..\..\..\Program Files\SOLIDWORKS Corp\SOLIDWORKS\SolidWorks.Interop.swpublished.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="appsetting.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>appsetting.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\ExportDxfClass.cs" />
+    <Compile Include="Classes\ExportModelClass.cs" />
+    <Compile Include="Classes\ExportPdfClass.cs" />
+    <Compile Include="Classes\ExportBomClass.cs" />
+    <Compile Include="Classes\NamingProjectClass.cs" />
+    <Compile Include="Classes\CutlistItem2.cs" />
+    <Compile Include="Classes\CutlistItem.cs" />
+    <Compile Include="Classes\SofwareInfoModel.cs" />
+    <Compile Include="Classes\StartModelItem.cs" />
+    <Compile Include="Classes\StringExtensions.cs" />
+    <Compile Include="Classes\Structs.cs" />
+    <Compile Include="Function\AutoBodyView.cs" />
+    <Compile Include="Function\BalloonView.cs" />
+    <Compile Include="Function\BubbleTooltip.cs" />
+    <Compile Include="Function\AlignLongestEdge.cs" />
+    <Compile Include="Function\ColourView.cs" />
+    <Compile Include="Function\CountTotalQtyFromDrawView.cs" />
+    <Compile Include="Function\CountTotalQtyFromDrawView2.cs" />
+    <Compile Include="Function\DependancyUtil.cs" />
+    <Compile Include="Function\EtchView.cs" />
+    <Compile Include="Function\ExportBom2.cs" />
+    <Compile Include="Function\ExportDxf2.cs" />
+    <Compile Include="Function\ExportDxfEntry.cs" />
+    <Compile Include="Function\ExportModel2.cs" />
+    <Compile Include="Function\ExportPdf2.cs" />
+    <Compile Include="Function\ExportPdfEntry.cs" />
+    <Compile Include="Function\HideRef.cs" />
+    <Compile Include="Function\LinkBomEntry.cs" />
+    <Compile Include="Function\PlatformAutomationEntry.cs" />
+    <Compile Include="Function\PrepDxf.cs" />
+    <Compile Include="Function\CountTotalQuantityFromDrawingView.cs" />
+    <Compile Include="Function\CreateAllBodyView.cs" />
+    <Compile Include="Function\DeleteTubeLaserBody.cs" />
+    <Compile Include="Function\DimProfile.cs" />
+    <Compile Include="Function\ExportBom.cs" />
+    <Compile Include="Function\ExportModel.cs" />
+    <Compile Include="Function\ExportPdf.cs" />
+    <Compile Include="Function\Geometry.cs" />
+    <Compile Include="Function\Macros.cs" />
+    <Compile Include="Function\Message.cs" />
+    <Compile Include="Function\NamingProject.cs" />
+    <Compile Include="Function\PlateWeldNote.cs" />
+    <Compile Include="Function\ExportDxf.cs" />
+    <Compile Include="Function\PrepDxfEntry.cs" />
+    <Compile Include="Function\SortCutlist.cs" />
+    <Compile Include="Function\StartModel.cs" />
+    <Compile Include="Function\SwErrors.cs" />
+    <Compile Include="Function\Update.cs" />
+    <Compile Include="MacroFeatures\EtchFeatureMF.cs" />
+    <Compile Include="MacroFeatures\EtchFeaturePMP.cs" />
+    <Compile Include="MacroFeatures\Experimental\Experimental.cs" />
+    <Compile Include="MacroFeatures\Experimental\ExperimentalMF.cs" />
+    <Compile Include="MacroFeatures\Experimental\ExperimentalPMP.cs" />
+    <Compile Include="MacroFeatures\Experimental\MacroFeature.cs" />
+    <Compile Include="MacroFeatures\Experimental\PMP.cs" />
+    <Compile Include="SWIntegration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WPF\AmendQuantity.xaml.cs">
+      <DependentUpon>AmendQuantity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\AutoBodyViewWPF.xaml.cs">
+      <DependentUpon>AutoBodyViewWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\CreateBodyViewWPF.xaml.cs">
+      <DependentUpon>CreateBodyViewWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\HideRefWPF.xaml.cs">
+      <DependentUpon>HideRefWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\PrepDxfWPF.xaml.cs">
+      <DependentUpon>PrepDxfWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\ExportDxfWPF.xaml.cs">
+      <DependentUpon>ExportDxfWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\ExportModelWPF.xaml.cs">
+      <DependentUpon>ExportModelWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\ExportPdfWPF.xaml.cs">
+      <DependentUpon>ExportPdfWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\ExportProjectWPF.xaml.cs">
+      <DependentUpon>ExportProjectWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\LinkBomWPF.xaml.cs">
+      <DependentUpon>LinkBomWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\NamingProjectWPF.xaml.cs">
+      <DependentUpon>NamingProjectWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\PlatformAutomation.xaml.cs">
+      <DependentUpon>PlatformAutomation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\PlatformAutomation2.xaml.cs">
+      <DependentUpon>PlatformAutomation2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\PlatformAutomation3.xaml.cs">
+      <DependentUpon>PlatformAutomation3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\ProductionExportForm.xaml.cs">
+      <DependentUpon>ProductionExportForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\QuickNote.xaml.cs">
+      <DependentUpon>QuickNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\StartModelMenu.xaml.cs">
+      <DependentUpon>StartModelMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\TaskpaneHostUI.xaml.cs">
+      <DependentUpon>TaskpaneHostUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\TaskpaneHostUIWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WPF\TaskpaneHostUIWin.Designer.cs">
+      <DependentUpon>TaskpaneHostUIWin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\ViewPallete.xaml.cs">
+      <DependentUpon>ViewPallete.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="WPF\AmendQuantity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\AutoBodyViewWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\CreateBodyViewWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\HideRefWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\PrepDxfWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\ExportDxfWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\ExportModelWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\ExportPdfWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\ExportProjectWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\LinkBomWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\NamingProjectWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\PlatformAutomation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\PlatformAutomation2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\PlatformAutomation3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\ProductionExportForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\QuickNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\StartModelMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\TaskpaneHostUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\ViewPallete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="appsetting.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>appsetting.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WPF\TaskpaneHostUIWin.resx">
+      <DependentUpon>TaskpaneHostUIWin.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Platform Automation 2\General\Width and landing length.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Platform Automation 2\General\Height and angle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\misc\FasternerLogo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenBolton.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenBoltonFixed.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenBoltonWheelOnly.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenRemovableBolton.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenRemovableBoltonFixed.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenRemovableBoltonWheelOnly.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenRemovableWelded.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenRemovableWeldedFixed.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenRemovableWeldedWheelOnly.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenWelded.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenWeldedFixed.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenWeldedWheelOnly.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenStairWidth.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenTop.png" />
+    <Resource Include="Resources\Platform Automation\OverhangLeftOpen\OverhangLeftOpenSide.png" />
+    <Resource Include="Resources\Icons\SettingIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\CreateSingleBodyView.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\SortCutList.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\CreateAllBodyView.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\DimensionProfile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\Balloon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\Add Note.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\SaveDxf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\Export BOM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\StartModel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\Update.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\QuickNote.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\PlatformAutomation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\ExportPDF.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Macro Feature Icon\EtchCut.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Macro Feature Icon\EtchCut_S.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\PlateWeldNote.png" />
+    <Resource Include="Resources\Icons\AutoBodyView.png" />
+    <Resource Include="Resources\Icons\AlignLongestEdge.png" />
+    <Resource Include="Resources\Icons\DeleteTubeLaserBody.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\NamingProject.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\ExportModel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\LinkBom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\EtchView.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\ProjectExport.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\HideRef.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\ColorView.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\CreateAllView.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Resources\MainIcon.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\modelview.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <Version>7.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="MongoDB.Driver">
+      <Version>2.20.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetPath)" "$(SolutionDir)mStructuralInstaller\bin\$(ConfigurationName)\source\$(ProjectName).dll"
+xcopy "$(ProjectDir)Resources\Macro Feature Icon" "$(SolutionDir)mStructuralInstaller\bin\$(ConfigurationName)\source\Macro Feature Icon" /e /y /i /r</PostBuildEvent>
+  </PropertyGroup>
+</Project>

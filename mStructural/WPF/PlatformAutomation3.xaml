@@ -1,0 +1,96 @@
+﻿<Window x:Class="mStructural.WPF.PlatformAutomation3"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:mStructural.WPF"
+             mc:Ignorable="d" 
+             Height="600" Width="1000" Title="Platform Automation" Topmost="True" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel>
+            <StackPanel>
+                <TextBlock Margin="5"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width=" 130">Drawing No (BT)</TextBlock>
+                <TextBox x:Name="DrawingNoTb" Margin="5" Width=" 100" Text="00000"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width="130">Project Description</TextBlock>
+                <TextBox x:Name="ProjectDesTb" Margin="5" Width="500"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width=" 130">Master Location</TextBlock>
+                <TextBox x:Name="MasterLocTb" Margin=" 5" Width="500"></TextBox>
+                <Button x:Name="MasterLocBtn" Margin="5" Width=" 100" Background="White" Click="MasterLocBtn_Click">Browse</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width=" 130">Output Location</TextBlock>
+                <TextBox x:Name="OutputLocTb" Margin=" 5" Width="500"></TextBox>
+                <Button x:Name="OutputLocBtn" Margin="5" Width=" 100" Click="OutputLocBtn_Click" Background="White">Browse</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width="130">Type</TextBlock>
+                <ComboBox x:Name="TypeCb" Margin="5" SelectedIndex="0" Width=" 120" BorderBrush="White">
+                    <ComboBoxItem>Stairways</ComboBoxItem>
+                    <ComboBoxItem>Step-type</ComboBoxItem>
+                </ComboBox>
+                <TextBlock Margin=" 5" Width="100" TextAlignment="Right">Overhang</TextBlock>
+                <CheckBox x:Name="OverhangCh" Margin=" 5" ></CheckBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width="130">Frame</TextBlock>
+                <ComboBox x:Name="FrameCb" Margin="5" SelectedIndex="0" Width="120">
+                    <ComboBoxItem>Fix</ComboBoxItem>
+                    <ComboBoxItem>Wheel</ComboBoxItem>
+                </ComboBox>
+                <TextBlock Margin=" 5" Width=" 100" TextAlignment="Right">Jockey Stand</TextBlock>
+                <CheckBox x:Name="JockeyStandCh" Margin=" 5" IsEnabled="False"></CheckBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width="130">Handrail</TextBlock>
+                <ComboBox x:Name="HandrailCb" Margin="5" SelectedIndex="0" Width="120">
+                    <ComboBoxItem>Welded</ComboBoxItem>
+                    <ComboBoxItem>Bolted</ComboBoxItem>
+                </ComboBox>
+                <TextBlock Margin="5" Width="100" TextAlignment="Right">Removable</TextBlock>
+                <CheckBox x:Name="RemovableCh" Margin="5"></CheckBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width="130">Gate</TextBlock>
+                <ComboBox x:Name="GateCb" Margin="5" SelectedIndex="0" Width="120">
+                    <ComboBoxItem>None</ComboBoxItem>
+                    <ComboBoxItem>LHS Single Gate</ComboBoxItem>
+                    <ComboBoxItem>RHS Single Gate</ComboBoxItem>
+                    <ComboBoxItem>Double Gate</ComboBoxItem>
+                    <ComboBoxItem>Bom Rail</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin=" 20,5" Width="130">Forklift Slot</TextBlock>
+                <CheckBox x:Name="ForkliftCh" Margin="5"></CheckBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width="130">Height (mm)</TextBlock>
+                <TextBox x:Name="HeightTb" Margin="5" Width="120">2000</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width="130">Angle (degree)</TextBlock>
+                <TextBox x:Name="AngleTb" Margin="5" Width="120">45</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width="130">Width (mm)</TextBlock>
+                <TextBox x:Name="WidthTb" Margin="5" Width="120">700</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width="130">Landing Length (mm)</TextBlock>
+                <TextBox x:Name="LandingLengthTb" Margin="5" Width="120">700</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="20,5" Width="130">Overhang Length (mm)</TextBlock>
+                <TextBox x:Name="OverhangLengthTb" Margin="5" Width="120" IsEnabled="False">700</TextBox>
+            </StackPanel>
+        </StackPanel>
+        <Button x:Name="GenerateBtn" Content="Generate" Margin="0,0,25,25" Background="White" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="130" Click="GenerateBtn_Click"/>
+    </Grid>
+</Window>

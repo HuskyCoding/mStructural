@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="mStructural" GeneratedClassName="appsetting">
+  <Profiles />
+  <Settings>
+    <Setting Name="ViewGap" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="StartModelPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\BendTech\Library\02-DESIGN LIBRARY\BT LIBRARY\START MODELS</Value>
+    </Setting>
+    <Setting Name="EdgeNote" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ETCHING;ETCHING (TYP);LINE ETCHING;LINE ETCHING (TYP);SLOT;2x SLOTS</Value>
+    </Setting>
+    <Setting Name="PAMasterPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\Programming\MasterPlatform\PlatformAutomation</Value>
+    </Setting>
+    <Setting Name="PATargetPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\MaxwellWG\Desktop\PA Target</Value>
+    </Setting>
+    <Setting Name="DeleteTubeLaserBodyLoc" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

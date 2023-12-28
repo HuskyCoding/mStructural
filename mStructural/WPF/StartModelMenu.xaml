@@ -1,0 +1,42 @@
+﻿<Window x:Class="mStructural.WPF.StartModelMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:mStructural.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000"
+             Height="600" Width="1000"
+             MinHeight="600" MinWidth="1000" 
+            Topmost="True" Title="Start Model">
+    <Grid Background="White" Margin="0,0,0,0">
+        <Label Content="Start Model :" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="startModelListCb" Margin="154,77,0,0" VerticalAlignment="Top" Height="25" BorderBrush="White" HorizontalAlignment="Left" Width="700" SelectionChanged="startModelListCb_SelectionChanged" TabIndex="2">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Label Content="Drawing No : BT" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="DrawNoTB" Margin="154,25,0,0" TextWrapping="Wrap" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Text="00000" TabIndex="0" PreviewTextInput="DrawNoTB_PreviewTextInput" MaxLength="5" TextChanged="DrawNoTB_TextChanged"/>
+        <Label Content="Model Instance No:" HorizontalAlignment="Left" Margin="360,25,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ModelInstTb" Margin="500,25,0,0" TextWrapping="Wrap" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Text="000" TabIndex="1" PreviewTextInput="ModelInstTb_PreviewTextInput" MaxLength="3" TextChanged="ModelInstTb_TextChanged"/>
+        <Label Content="(Example: 150, 200, 250, etc)" HorizontalAlignment="Left" Margin="616,25,0,0" VerticalAlignment="Top" Width="165"/>
+        <DataGrid x:Name="DG1" CanUserAddRows="False" Margin="25,184,25,74"  AutoGenerateColumns="False" ItemsSource="{Binding SmCol}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ItemNo}" Header="Item No" IsReadOnly="True" CanUserSort="False"/>
+                <DataGridTextColumn Binding="{Binding OriginalFileName}" Header="Original File Name" IsReadOnly="True" CanUserSort="False"/>
+                <DataGridTextColumn Binding="{Binding NewFileName}" Header="New File Name" IsReadOnly="False" CanUserSort="False"/>
+                <DataGridCheckBoxColumn Binding="{Binding IsTopLevel}" Header="Is Top Level?" IsReadOnly="True" CanUserSort="False"/>
+                <DataGridCheckBoxColumn x:Name="IncludeCbCol" Binding="{Binding Include, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Include?" IsReadOnly="False" CanUserSort="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Output Location :" HorizontalAlignment="Left" Margin="25,125,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="OutputLocTb" HorizontalAlignment="Left" Margin="154,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="603" Height="25" TabIndex="3"/>
+        <Button x:Name="BrowseBtn" Content="Browse" HorizontalAlignment="Left" Margin="779,125,0,0" VerticalAlignment="Top" Height="25" Background="White" Width="75" Click="BrowseBtn_Click" TabIndex="4"/>
+        <Button x:Name="GenerateBtn" Content="Generate" Margin="0,0,25,25" Background="White" HorizontalAlignment="Right" Width="73" Height="25" VerticalAlignment="Bottom" Click="GenerateBtn_Click" TabIndex="5"/>
+
+    </Grid>
+</Window>

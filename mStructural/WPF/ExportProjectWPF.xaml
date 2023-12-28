@@ -1,0 +1,134 @@
+﻿<Window x:Class="mStructural.WPF.ExportProjectWPF"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:mStructural.WPF"
+             mc:Ignorable="d" 
+             Height="600" Width="800" Title="Export Project" Topmost="True" MinHeight="600">
+    <Grid>
+        <TabControl x:Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged">
+            <TabItem x:Name="MainTab" Header="Main" TabIndex="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Background="White">
+                        <TextBlock Margin="10">Drawing Path:</TextBlock>
+                        <TextBox x:Name="drawingPathTb" Margin="10"></TextBox>
+                        <Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="BrowseBtn" Click="BrowseBtn_Click" Background="AliceBlue" Width="100" Margin="10">Browse</Button>
+                                <Button x:Name="GetActivePathBtn" Click="GetActivePathBtn_Click" Background="AliceBlue" Width="100" Margin="10">Get active path</Button>
+                            </StackPanel>
+                        </Grid>
+                        <CheckBox x:Name="IsProductionCh" Margin="10" IsChecked="True">Production</CheckBox>
+                        <CheckBox x:Name="CheckAllCh" Margin="10" Checked="CheckAllCh_Checked" Unchecked="CheckAllCh_Unchecked">All</CheckBox>
+                        <CheckBox x:Name="BomCh" Margin="10" Checked="BomCh_Checked" Unchecked="BomCh_Unchecked">BOM</CheckBox>
+                        <CheckBox x:Name="ModelCh" Margin="10" Checked="ModelCh_Checked" Unchecked="ModelCh_Unchecked">Model</CheckBox>
+                        <CheckBox x:Name="DxfCh" Margin="10" Checked="DxfCh_Checked" Unchecked="DxfCh_Unchecked">DXF</CheckBox>
+                        <CheckBox x:Name="PdfCh" Margin="10" Checked="PdfCh_Checked" Unchecked="PdfCh_Unchecked">PDF</CheckBox>
+                    </StackPanel>
+                    <Button x:Name="ConfirmBtn" Click="ConfirmBtn_Click" Margin="10" Grid.Row="1" Width="100" Background="AliceBlue" >Confirm</Button>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="BomTab" IsEnabled="False" Header="BOM" TabIndex="1">
+                <StackPanel>
+                    <DataGrid x:Name="BomDg" Margin="10" Height="400" CanUserAddRows="False" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding TableName}" Header="Table Name" IsReadOnly="True" CanUserSort="False"/>
+                            <DataGridTextColumn Binding="{Binding BalloonRef}" Header="Balloon No." IsReadOnly="true" CanUserSort="False"/>
+                            <DataGridCheckBoxColumn x:Name="ExportTubeLaserCol" Binding="{Binding ExportTubeLaser, Mode=TwoWay}" Header="Rename Body?" CanUserSort="False"/>
+                            <DataGridTemplateColumn Header="Tube Laser Configuration" CanUserSort="False">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <HierarchicalDataTemplate>
+                                        <ComboBox SelectedItem="{Binding TubeLaserConfiguration,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding TubeLaserConfigurationList}" />
+                                    </HierarchicalDataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock x:Name="BomTubeLaserTabWarnTxt" Foreground="Red" Margin="10"></TextBlock>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="ModelTab" IsEnabled="False" Header="Model" TabIndex="2">
+                <StackPanel>
+                    <TextBlock Margin="20,10">Top Level Model</TextBlock>
+                    <ComboBox x:Name="TopLevelModelCb" Margin="20, 10" SelectionChanged="TopLevelModelCb_SelectionChanged"></ComboBox>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <StackPanel>
+                                <CheckBox x:Name="EDrawingCh" Margin="10" IsChecked="True">EDrawing</CheckBox>
+                                <ListBox x:Name="edrawingLb" Margin="10" Height="300">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <CheckBox Content="{Binding Configuration}" IsChecked="{Binding IsChecked}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <StackPanel>
+                                <CheckBox x:Name="TubeLaserCh" Margin="10" IsChecked="True">Tube Laser</CheckBox>
+                                <ComboBox x:Name="TubeLaserCb" Margin="10"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <TextBlock x:Name="ModelTabWarnTxt" Foreground="Red" Margin="10"></TextBlock>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="DxfTab" IsEnabled="False" Header="DXF" TabIndex="3">
+                <StackPanel>
+                    <DataGrid x:Name="DxfDg" Margin="10" Height="400" CanUserAddRows="False" AutoGenerateColumns="False">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <EventSetter
+                                Event="PreviewMouseLeftButtonDown"
+                                Handler="DxfDgCell_PreviewMouseLeftButtonDown"/>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding SheetName}" Header="Sheet Name" IsReadOnly="True" CanUserSort="False"/>
+                            <DataGridCheckBoxColumn Binding="{Binding Include}" Header="Include" IsReadOnly="False" CanUserSort="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="DxfCheckBtn" Click="DxfCheckBtn_Click" Margin="10" Width="150" Background="White">Check Selected</Button>
+                        <Button x:Name="DxfUncheckBtn" Click="DxfUncheckBtn_Click" Margin="10" Width="150" Background="White">Uncheck Selected</Button>
+                    </StackPanel>
+                    <TextBlock x:Name="DxfTabWarnTxt" Foreground="Red" Margin="10"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="PdfTab" IsEnabled="False" Header="PDF" TabIndex="4">
+                <StackPanel>
+                    <DataGrid x:Name="PdfDg" Margin="10" Height="400" CanUserAddRows="False" AutoGenerateColumns="False">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <EventSetter
+                                Event="PreviewMouseLeftButtonDown"
+                                Handler="PdfDgCell_PreviewMouseLeftButtonDown"/>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding SheetName}" Header="Sheet Name" IsReadOnly="True" CanUserSort="False"/>
+                            <DataGridCheckBoxColumn Binding="{Binding Include}" Header="Include" IsReadOnly="False" CanUserSort="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="PdfCheckBtn" Click="PdfCheckBtn_Click" Margin="10" Width="150" Background="White">Check Selected</Button>
+                        <Button x:Name="PdfUncheckBtn" Click="PdfUncheckBtn_Click" Margin="10" Width="150" Background="White">Uncheck Selected</Button>
+                    </StackPanel>
+                    <TextBlock x:Name="PdfTabWarnTxt" Foreground="Red" Margin="10"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

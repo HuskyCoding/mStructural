@@ -1,0 +1,31 @@
+﻿<Window x:Class="mStructural.WPF.ExportPdfWPF"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:mStructural.WPF"
+             mc:Ignorable="d" 
+             Height="500" Width="500" Topmost="True" Title="Export PDF" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel>
+            <DataGrid x:Name="DG1" Margin="20,20, 20,5 " Height="300" CanUserAddRows="False" AutoGenerateColumns="False">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <EventSetter
+                        Event="PreviewMouseLeftButtonDown"
+                        Handler="DataGridCell_PreviewMouseLeftButtonDown"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding SheetName}" Header="Sheet Name" IsReadOnly="True"/>
+                    <DataGridCheckBoxColumn Binding="{Binding Include}" Header="Include"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <CheckBox x:Name="CheckUncheckCh" Checked="CheckUncheckCh_Checked" Unchecked="CheckUncheckCh_Unchecked" Margin=" 20,5">
+                Check / Uncheck Selected
+            </CheckBox>
+            <CheckBox x:Name="ProductionCh" IsChecked="True" Margin="20,5">Production</CheckBox>
+            <Button x:Name="ExportBtn" Click="ExportBtn_Click" Margin="5" Height="25" Width="100" Background="White">Export</Button>
+        </StackPanel>
+    </Grid>
+</Window>
